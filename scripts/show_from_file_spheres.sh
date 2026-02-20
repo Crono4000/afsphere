@@ -1,0 +1,1 @@
+afsphere execute_sql "SELECT sphere.sphere_id, sphere_name FROM connection, sphere WHERE connection.sphere_id = sphere.sphere_id AND file_id = $1;" friendly

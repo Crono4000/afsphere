@@ -1,0 +1,1 @@
+afsphere execute_sql "DELETE FROM connection WHERE file_id = $1 AND sphere_id = $2;"
