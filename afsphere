@@ -1,0 +1,27 @@
+#!/bin/bash
+
+export AFSPHERE_PATH="/mnt/c/repos/afsphere"
+
+file="$AFSPHERE_PATH/scripts/$1.sh"
+
+if [ ! -f $file ]; then
+  "$AFSPHERE_PATH/scripts/afs_error.sh" "The file $1 doesn't exist"
+  exit 1
+fi
+if [ ! -x $file ]; then
+  "$AFSPHERE_PATH/scripts/afs_error.sh" "The file $1 doesn't have permission to be executed"
+  exit 1
+fi
+
+arguments=()
+i=0
+
+for arg in "$@"; do
+  if [ $i -gt 0 ]; then
+    arguments+=("$arg")
+  else
+    i=$(($i + 1))
+  fi
+done
+
+"$file" "${arguments[@]}"
