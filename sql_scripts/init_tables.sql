@@ -1,10 +1,23 @@
 
+CREATE TABLE disk (
+    disk_id SERIAL PRIMARY KEY,
+    disk_limit BIGINT DEFAULT 0,
+    disk_used BIGINT DEFAULT 0,
+    disk_path TEXT,
+    disk_current INTEGER DEFAULT 0,
+
+    UNIQUE (disk_id),
+    UNIQUE (disk_path)
+);
+
 CREATE TABLE file (
     file_id SERIAL PRIMARY KEY,
     file_path TEXT NOT NULL,
     file_size BIGINT,
+    disk_id INTEGER,
     file_name TEXT NOT NULL,
 
+    UNIQUE (file_name),
     FOREIGN KEY (disk_id)
     REFERENCES disk(disk_id)
     ON DELETE CASCADE
@@ -12,7 +25,8 @@ CREATE TABLE file (
 
 CREATE TABLE sphere (
     sphere_id SERIAL PRIMARY KEY,
-    sphere_name TEXT NOT NULL
+    sphere_name TEXT NOT NULL,
+    UNIQUE (sphere_name)
 );
 
 CREATE TABLE connection (
@@ -32,16 +46,8 @@ CREATE TABLE connection (
     ON DELETE CASCADE
 );
 
-CREATE TABLE disk (
-    disk_id INTEGER,
-    disk_limit BIGINT,
-    disk_used BIGINT,
-    disk_path TEXT,
-
-    PRIMARY KEY (disk_id),
-    UNIQUE (disk_id),
-    UNIQUE (disk_path)
-);
+CREATE INDEX idx_file_name
+ON file(file_name);
 
 CREATE INDEX idx_file_id
 ON file(file_id);
@@ -51,7 +57,3 @@ ON sphere(sphere_name);
 
 CREATE INDEX idx_sphere_id
 ON sphere(sphere_id);
-
-ALTER TABLE file
-ADD CONSTRAINT file_file_name_unique
-UNIQUE (file_name);

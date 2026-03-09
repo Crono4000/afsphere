@@ -1,2 +1,2 @@
 
-ls /afsphere/scripts
+ls $AFSPHERE_PATH/scripts

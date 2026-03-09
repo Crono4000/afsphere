@@ -22,6 +22,11 @@ while getopts ":fp" opt; do
 done
 
 shift $((OPTIND - 1))
+
+if [ $# -ne 1 ]; then
+    afsphere afs_error "Invalid number of arguments;"
+    exit 1
+fi
 if [ $FILE = true -o $FRIENDLY = true ]; then
     if $FILE; then
         if [ ! -f "$AFSPHERE_PATH/sql_scripts/$1" ]; then
@@ -36,7 +41,7 @@ else
     psql -q -t -A -h 127.0.0.1 -U pizzamozzarella -d afsphere -c "$1" -w
 fi
 
-if [ $? -eq 1 ]; then
-    afsphere afs_error "Error in the following query: $1"
+if [ $? -gt 0 ]; then
+    afsphere afs_error "Error in the following query or file: $1"
     exit 1
 fi
