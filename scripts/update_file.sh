@@ -19,7 +19,7 @@ done
 
 shift $((OPTIND - 1))
 
-df="$(afsphere execute_sql "SELECT file_path FROM file WHERE file_name = '$1';")"
+df="$(afsphere execute_sql "SELECT CONCAT_WS('/', disk_path, file_name) FROM file, disk WHERE file.disk_id = disk.disk_id AND file_name = '$1';")"
 if [ $? -gt 0 ]; then
     afsphere afs_error "Error getting the path from the disk;"
     exit 1

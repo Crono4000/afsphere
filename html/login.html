@@ -1,0 +1,41 @@
+<html>
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <form class="form" id="login_form" action="/avaliate_login" method="post" >
+            <label>username:</label> <br>
+            <input type="text" name="username"><br><br>
+            
+            <label>password:</label> <br>
+            <input type="text" name="password"><br><br>
+
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+    </div>
+    <script>
+        const form = document.getElementById("login_form");
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault(); // impede a navegação
+
+            const formData = new FormData(form);
+
+            const response = await fetch("/avaliate_login", {
+                method: "POST",
+                body: formData
+            });
+
+            const result = await response.json();
+            if(!response.ok){
+                alert(result.error);
+            } else {
+                document.cookie = "token=" + result.token + "; expires=Fri, 31 Dec 2026 23:59:59 UTC";
+                window.location.assign("/");
+            }
+        });
+    </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
