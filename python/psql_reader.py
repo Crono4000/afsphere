@@ -37,7 +37,7 @@ class PsqlReader():
         
     def RenderSphereFiles(self, sphere):
         with self.conn.cursor() as cur:
-            query = "SELECT file.file_id, file_name, file_path, rank FROM file, connection, sphere WHERE file.file_id = connection.file_id AND connection.sphere_id = sphere.sphere_id AND sphere_name = %s ORDER BY rank DESC;"
+            query = "SELECT file.file_id, file_name, rank FROM file, connection, sphere WHERE file.file_id = connection.file_id AND connection.sphere_id = sphere.sphere_id AND sphere_name = %s ORDER BY rank DESC;"
             cur.execute(query, [sphere])
 
             return self.RenderTable(["id", "name", "rank"], cur)

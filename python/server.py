@@ -1,5 +1,5 @@
 
-from flask_stuff import *
+from flask_utils import *
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=80, debug=False)
+    app.run(host="0.0.0.0", port=443, debug=False, ssl_context=('/assl/server.crt', '/assl/server.key')))

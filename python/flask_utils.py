@@ -23,6 +23,7 @@ psql = PsqlReader()
 limiter = Limiter(
     get_remote_address,
     app=app,
+    storage_uri="memory://",
     default_limits=["100 per hour"]
 )
 
@@ -74,7 +75,6 @@ def loginPage():
 @app.route("/sphere/<name>")
 def LoadSphere(name):
     token = request.cookies.get("token")
-    print(token)
     if not psql.is_token_valid(token):
         return redirect("/login")
     if not psql.check_permission(token, "admin"):
