@@ -9,7 +9,7 @@ from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 
 afsphere = os.getenv("AFSPHERE_PATH")
-link = "http://127.0.0.1:5000"
+link = "https://127.0.0.1:5000"
 
 os.chdir(afsphere + "/python")
 
@@ -17,7 +17,7 @@ def full_path(pat):
     global afsphere
     return afsphere + pat
 
-app = Flask(__name__,  template_folder=full_path("/html"))
+app = Flask(__name__, template_folder=full_path("/html"))
 psql = PsqlReader()
 
 limiter = Limiter(
@@ -72,6 +72,11 @@ def loginPage():
         return redirect("/")
     return render_template("login.html")
 
+
+@app.route("/image/<name>")
+def LoadImage(name):
+    return send_from_directory(full_path("/images"), name)
+
 @app.route("/sphere/<name>")
 def LoadSphere(name):
     token = request.cookies.get("token")
@@ -82,3 +87,14 @@ def LoadSphere(name):
     if not psql.ExistsSphere(name):
         return render_template("no_sphere.html", sphere = name)
     return render_template("show_sphere.html", content = psql.RenderSphereFiles(name), sphere = name)
+
+@app.route("/file/<name>")
+def LoadFile(name):
+    token = request.cookies.get("token")
+    if not psql.is_token_valid(token):
+        return redirect("/login")
+    if not psql.check_permission(token, "admin"):
+        return redirect("/")
+    if not psql.ExistsFile(name):
+        return render_template("no_file.html", file = name)
+    return render_template("default_file.html", file = name)

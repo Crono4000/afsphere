@@ -51,6 +51,16 @@ class PsqlReader():
                 return False
             else:
                 return True
+    
+    def ExistsFile(self, file):
+        with self.conn.cursor() as cur:
+            query = "SELECT file_id FROM file WHERE file_name = %s;"
+            cur.execute(query, [file])
+
+            if cur.rowcount == 0:
+                return False
+            else:
+                return True
 
     def get_token(self, token):
         with self.conn.cursor() as cur:
