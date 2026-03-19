@@ -4,6 +4,7 @@ CREATE TABLE disk (
     disk_limit BIGINT DEFAULT 0,
     disk_used BIGINT DEFAULT 0,
     disk_path TEXT,
+    disk_current INTEGER DEFAULT 0,
 
     UNIQUE (disk_id),
     UNIQUE (disk_path)
@@ -11,6 +12,7 @@ CREATE TABLE disk (
 
 CREATE TABLE file (
     file_id SERIAL PRIMARY KEY,
+    file_path TEXT NOT NULL,
     file_size BIGINT,
     disk_id INTEGER,
     file_name TEXT NOT NULL,
