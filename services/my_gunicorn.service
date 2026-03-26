@@ -1,0 +1,10 @@
+[Unit]
+After=network.target
+
+[Service]
+ExecStart=afsphere start_gunicorn
+
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
