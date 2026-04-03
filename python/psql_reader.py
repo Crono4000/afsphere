@@ -5,6 +5,9 @@ class PsqlReader():
     def __init__(self):
         self.conn = psycopg.connect("host=127.0.0.1 port=5432 dbname=afsphere user=pizzamozzarella password=gotica")
 
+    def __init__(self, db):
+        self.db = db
+
     def RenderTable(self, columns, cur):
         result = ""
 

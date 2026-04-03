@@ -1,16 +1,20 @@
 
-CREATE TABLE disk (
+CREATE TABLE IF NOT EXISTS disk (
     disk_id SERIAL PRIMARY KEY,
     disk_limit BIGINT DEFAULT 0,
     disk_used BIGINT DEFAULT 0,
     disk_path TEXT,
     disk_current INTEGER DEFAULT 0,
+    disk_priority INTEGER DEFAULT 0,
 
     UNIQUE (disk_id),
     UNIQUE (disk_path)
 );
 
-CREATE TABLE file (
+ALTER TABLE disk
+ADD COLUMN IF NOT EXISTS disk_priority INTEGER DEFAULT 0;
+
+CREATE TABLE IF NOT EXISTS file (
     file_id SERIAL PRIMARY KEY,
     file_path TEXT NOT NULL,
     file_size BIGINT,
@@ -23,14 +27,14 @@ CREATE TABLE file (
     ON DELETE CASCADE
 );
 
-CREATE TABLE sphere (
+CREATE TABLE IF NOT EXISTS sphere (
     sphere_id SERIAL PRIMARY KEY,
     sphere_name TEXT NOT NULL,
     UNIQUE (sphere_name)
 );
 
-CREATE TABLE connection (
-    rank INTEGER,
+CREATE TABLE IF NOT EXISTS connection (
+    rank INTEGER DEFAULT 0,
     sphere_id INTEGER,
     file_id INTEGER,
 
@@ -46,7 +50,10 @@ CREATE TABLE connection (
     ON DELETE CASCADE
 );
 
-CREATE TABLE app_user (
+ALTER TABLE connection
+ALTER COLUMN rank SET DEFAULT 0;
+
+CREATE TABLE IF NOT EXISTS app_user (
     user_id SERIAL PRIMARY KEY,
     username VARCHAR(30) NOT NULL,
     password VARCHAR(30) NOT NULL,
@@ -54,7 +61,7 @@ CREATE TABLE app_user (
     UNIQUE (username)
 );
 
-CREATE TABLE login_session (
+CREATE TABLE IF NOT EXISTS login_session (
     key_login SERIAL PRIMARY KEY,
     token CHAR(40),
     user_id INTEGER,
@@ -65,14 +72,14 @@ CREATE TABLE login_session (
     ON DELETE CASCADE
 );
 
-CREATE TABLE permission (
+CREATE TABLE IF NOT EXISTS permission (
     permission_id SERIAL PRIMARY KEY,
     permission_name VARCHAR(20) NOT NULL,
 
     UNIQUE (permission_name)
 );
 
-CREATE TABLE user_permission (
+CREATE TABLE IF NOT EXISTS user_permission (
     user_id INTEGER,
     permission_id INTEGER,
 
@@ -88,14 +95,14 @@ CREATE TABLE user_permission (
     ON DELETE CASCADE
 );
 
-CREATE INDEX idx_file_name
+CREATE INDEX IF NOT EXISTS idx_file_name
 ON file(file_name);
 
-CREATE INDEX idx_file_id
+CREATE INDEX IF NOT EXISTS idx_file_id
 ON file(file_id);
 
-CREATE INDEX idx_sphere_name
+CREATE INDEX IF NOT EXISTS idx_sphere_name
 ON sphere(sphere_name);
 
-CREATE INDEX idx_sphere_id
+CREATE INDEX IF NOT EXISTS idx_sphere_id
 ON sphere(sphere_id);

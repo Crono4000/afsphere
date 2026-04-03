@@ -2,11 +2,9 @@
 
 #import subprocess
 import os
-from flask import Flask, render_template, send_from_directory, request, jsonify, redirect
-from psql_reader import PsqlReader
+from flask import Flask, render_template, send_from_directory, request, jsonify, redirect, send_file, make_response
+from AfsphereDB import *
 import subprocess
-from flask_limiter import Limiter
-from flask_limiter.util import get_remote_address
 
 afsphere = os.getenv("AFSPHERE_PATH")
 link = "https://127.0.0.1:5000"
@@ -18,18 +16,12 @@ def full_path(pat):
     return afsphere + pat
 
 app = Flask(__name__, template_folder=full_path("/html"))
-psql = PsqlReader()
 
-limiter = Limiter(
-    get_remote_address,
-    app=app,
-    storage_uri="memory://",
-    default_limits=["100 per hour"]
-)
+db = AfsphereDB()
 
 @app.route("/upload", methods=["POST"])
 def upload_file():
-    if not psql.is_token_valid(request.cookies.get("token")):
+    if not db.IsTokenValid(request.cookies.get("token")):
         return jsonify({"error": "Nenhum ficheiro enviado"}), 400
 
     if "file" not in request.files or "sphere" not in request.form:
@@ -39,21 +31,19 @@ def upload_file():
 
     if file.filename == "":
         return jsonify({"error": "Nome de ficheiro vazio"}), 400
+    if db.ExistFile(file.filename):
+        return jsonify({"error": "Já existe um ficheiro com esse nome"}), 400 
 
-    filepath = os.path.join(full_path("/buffer"), file.filename)
-    file.save(filepath)
+    data = file.read()
+    if not db.IsThereSpace(len(data)):
+        return jsonify({"error": "Não ha nenhum disco com espaço suficiente."}), 400 
 
-    result = subprocess.run(["afsphere", "add_file_to_sphere", filepath, request.form["sphere"]])
-    subprocess.run(["rm", filepath])
-    if (result.returncode > 0):
-        return jsonify({"error": "Error adding the file to the DB"}), 400
-
+    db.AddFileToSphere(file.filename, data, request.form["sphere"])
     return jsonify({"message": "Ficheiro recebido", "filename": file.filename})
 
 @app.route("/avaliate_login", methods=["POST"])
-@limiter.limit("5 per minute")
 def post_login():
-    token = psql.login(request.form['username'], request.form['password'])
+    token = db.login(request.form['username'], request.form['password'])
 
     if token == None:
         return jsonify({"error": "The password or username are incorrect"}), 400
@@ -62,13 +52,13 @@ def post_login():
 
 @app.route("/")
 def home():
-    if not psql.is_token_valid(request.cookies.get("token")):
+    if not db.IsTokenValid(request.cookies.get("token")):
         return redirect("/login")
     return "Olá, Flask!"
 
 @app.route("/login")
 def loginPage():
-    if psql.is_token_valid(request.cookies.get("token")):
+    if db.IsTokenValid(request.cookies.get("token")):
         return redirect("/")
     return render_template("login.html")
 
@@ -80,21 +70,29 @@ def LoadImage(name):
 @app.route("/sphere/<name>")
 def LoadSphere(name):
     token = request.cookies.get("token")
-    if not psql.is_token_valid(token):
+    if not db.IsTokenValid(token):
         return redirect("/login")
-    if not psql.check_permission(token, "admin"):
+    if not db.CheckUserPermission(token, "admin"):
         return redirect("/")
-    if not psql.ExistsSphere(name):
+    if not db.ExistSphere(name):
         return render_template("no_sphere.html", sphere = name)
-    return render_template("show_sphere.html", content = psql.RenderSphereFiles(name), sphere = name)
+    return render_template("show_sphere.html", content = db.RenderSphereFiles(name), sphere = name)
 
 @app.route("/file/<name>")
 def LoadFile(name):
     token = request.cookies.get("token")
-    if not psql.is_token_valid(token):
+    if not db.IsTokenValid(token):
         return redirect("/login")
-    if not psql.check_permission(token, "admin"):
+    if not db.CheckUserPermission(token, "admin"):
         return redirect("/")
-    if not psql.ExistsFile(name):
+    if not db.ExistFile(name):
         return render_template("no_file.html", file = name)
+
+    extension = name.split(".")[len(name.split(".")) - 1]
+    if extension == "pdf":
+        data = db.ExtractBinaryFileData(name)
+        response = make_response(data)
+        response.headers['Content-Type'] = 'application/pdf'
+        response.headers['Content-Disposition'] = 'inline; filename=%s.pdf' % name
+        return response
     return render_template("default_file.html", file = name)

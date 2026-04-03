@@ -7,7 +7,7 @@ DECLARE
     disk_pathh TEXT;
     disk_cur INTEGER;
 BEGIN
-  SELECT disk_id, disk_path, disk_current INTO disk_idd, disk_pathh, disk_cur FROM disk WHERE disk_used + siz < disk_limit LIMIT 1;
+  SELECT disk_id, disk_path, disk_current INTO disk_idd, disk_pathh, disk_cur FROM disk WHERE disk_used + siz < disk_limit ORDER BY disk_priority DESC LIMIT 1;
   IF disk_idd IS NULL THEN
     RAISE EXCEPTION 'There are no disks available';
   END IF;

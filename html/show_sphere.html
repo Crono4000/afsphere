@@ -41,9 +41,9 @@
                     body: formData
                 });
 
-                const result = await response.text();
+                const jso = await response.json();
                 if(!response.ok){
-                    alert(result);
+                    alert(jso.error);
                 } else {
                     var modalElement = document.getElementById('AddFile');
                     var modal = bootstrap.Modal.getInstance(modalElement);
