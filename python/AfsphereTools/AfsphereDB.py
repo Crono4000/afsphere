@@ -95,7 +95,7 @@ class AfsphereDB():
         query = "SELECT file.file_id, file_name, rank FROM file, connection, sphere WHERE file.file_id = connection.file_id AND connection.sphere_id = sphere.sphere_id AND sphere_name = %s ORDER BY rank DESC;"
         cur = self.Execute(query, [sphere])
 
-        return self.RenderCustomLineTable("<tr> <td>$0</td> <td><a href=\"/file/$1\" target=\"_blank\">$1</a></td> <td>$2</td> </tr>", ["id", "name", "rank"], cur)
+        return self.RenderCustomLineTable("<tr> <td>$0</td> <td><a href=\"/afsphere/file/$1\" target=\"_blank\">$1</a></td> <td>$2</td> </tr>", ["id", "name", "rank"], cur)
 
     # managing the accounts
 

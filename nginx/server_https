@@ -6,6 +6,54 @@ server {
     ssl_certificate_key /assl/server.key;
 
     location / {
-        proxy_pass http://127.0.0.1:5000;
+        proxy_pass http://127.0.0.1:5000; 
+    }
+
+    location /afsphere {
+        client_max_body_size 0;
+
+        content_by_lua_block {
+            local pgmoon = require("pgmoon")
+
+            local pg = pgmoon.new({ 
+                host = "127.0.0.1",
+                port = "5432",
+                database = "afsphere",
+                user = "pizzamozzarella",
+                password = "gotica"
+            })
+
+            local ok = pg:connect()
+            if not ok then
+                return ngx.redirect("https://afsphere.chickenkiller.com")
+            end
+
+            local headers = ngx.req.get_headers()
+            local cookies = headers["Cookie"]
+            local token = ""
+
+            if type(cookies) == "table" then
+                if cookies["token"] ~= nil then
+                    token = pg:escape_literal(cookies["token"])
+                else
+                    return ngx.redirect("https://afsphere.chickenkiller.com")
+                end
+            else
+                return ngx.redirect("https://afsphere.chickenkiller.com")
+            end
+            
+            local res = pg:query("SELECT user_id FROM login_session WHERE token = " .. token .. ";")
+            if not res or #res != 0 then
+                return ngx.redirect("https://afsphere.chickenkiller.com") 
+            end
+            local user = pg:escape_literal(res[1].user_id)
+
+            local res = pg:query("SELECT * FROM user_permission, permission WHERE user_id = " .. user .. " AND user_permission.permission_id = permission.permission_id AND permission_name = 'admin';")
+            if not res or #res != 0 then
+                return ngx.redirect("https://afsphere.chickenkiller.com") 
+            end
+        }
+
+        proxy_pass http://127.0.0.1:5000; 
     }
 }
