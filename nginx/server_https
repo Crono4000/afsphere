@@ -9,10 +9,10 @@ server {
         proxy_pass http://127.0.0.1:5000; 
     }
 
-    location /afsphere {
+    location /afsphere/ {
         client_max_body_size 0;
 
-        content_by_lua_block {
+        access_by_lua_block {
             local pgmoon = require("pgmoon")
 
             local pg = pgmoon.new({ 
@@ -28,22 +28,15 @@ server {
                 return ngx.redirect("https://afsphere.chickenkiller.com")
             end
 
-            local headers = ngx.req.get_headers()
-            local cookies = headers["Cookie"]
             local token = ""
-
-            if type(cookies) == "table" then
-                if cookies["token"] ~= nil then
-                    token = pg:escape_literal(cookies["token"])
-                else
-                    return ngx.redirect("https://afsphere.chickenkiller.com")
-                end
+            if ngx.var.cookie_token then
+                token = pg:escape_literal(ngx.var.cookie_token)
             else
                 return ngx.redirect("https://afsphere.chickenkiller.com")
             end
             
             local res = pg:query("SELECT user_id FROM login_session WHERE token = " .. token .. ";")
-            if not res or #res != 0 then
+            if not res or #res == 0 then
                 return ngx.redirect("https://afsphere.chickenkiller.com") 
             end
             local user = pg:escape_literal(res[1].user_id)
