@@ -30,7 +30,7 @@ class AfsphereDB():
             return cur.fetchone()[0]
 
     def ExistFile(self, file):
-        return self.Exists("SELECT file_id FROM file WHERE file_name = %s", [file])
+        return self.Exists("SELECT file_id FROM file WHERE file_name = %s AND disk_id IS NOT NULL", [file])
 
     def ExistSphere(self, file):
         return self.Exists("SELECT sphere_id FROM sphere WHERE sphere_name = %s", [file])
@@ -146,7 +146,9 @@ class AfsphereDB():
         return data
 
     def UploadBinaryFileData(self, data, name):
+        print(f"File Name:{name}")
         filepat = self.OneExecute("SELECT file_path FROM file WHERE file_name = %s", [name])
+        print(f"File Path:{name}")
         with open(filepat, "wb") as f:
             f.write(data)
 

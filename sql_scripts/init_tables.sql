@@ -22,10 +22,21 @@ CREATE TABLE IF NOT EXISTS file (
     file_name TEXT NOT NULL,
 
     UNIQUE (file_name),
+    UNIQUE (file_path),
     FOREIGN KEY (disk_id)
     REFERENCES disk(disk_id)
     ON DELETE CASCADE
 );
+
+DO $$
+BEGIN
+    IF NOT EXISTS (SELECT * FROM pg_constraint WHERE conname = 'file_file_path_unique') THEN
+        ALTER TABLE file
+        ADD CONSTRAINT file_file_path_unique
+        UNIQUE (file_path);
+    END IF;
+END
+$$;
 
 CREATE TABLE IF NOT EXISTS sphere (
     sphere_id SERIAL PRIMARY KEY,

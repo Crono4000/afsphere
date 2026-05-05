@@ -14,7 +14,7 @@ BEGIN
   SELECT file_id INTO file_ud FROM file WHERE disk_id IS NULL LIMIT 1;
 
   IF file_ud IS NOT NULL THEN
-    UPDATE file SET file_name = ficheiro_nome, file_path = CONCAT_WS('/', disk_pathh, disk_cur), disk_id = disk_idd, file_size = siz WHERE file_id = file_ud;
+    UPDATE file SET file_name = ficheiro_nome, file_size = siz WHERE file_id = file_ud;
   ELSE
     INSERT INTO file(file_name, file_path, disk_id, file_size) VALUES (ficheiro_nome,  CONCAT_WS('/', disk_pathh, disk_cur), disk_idd, siz) RETURNING file_id INTO file_ud;
   END IF;
