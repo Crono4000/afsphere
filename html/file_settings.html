@@ -1,0 +1,55 @@
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h2>Update name from file</h2>
+
+        <form class="modal-body" action="/afsphere/change_file_name" method="post">
+            <input type="hidden" name="old_file_name" value="{{ file | safe }}">
+
+            <label>Write the new name:</label> <br>
+            <input name="new_file_name" value="{{ file | safe }}"><br><br>
+            
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+
+        <h2>Update rank value</h2>
+
+        <form class="modal-body" action="/afsphere/change_rank" method="post" >
+            <input type="hidden" name="file" value="{{ file | safe }}">
+
+            <label>Write the sphere name:</label> <br>
+            <input name="sphere"> <br>
+
+            <label>Write the new rank:</label> <br>
+            <input type="number" name="rank" value="0"><br><br>
+            
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+
+        <h2>Connect file to a sphere</h2>
+
+        <form class="modal-body" action="/afsphere/connect_file" method="post" >
+            <input type="hidden" name="file" value="{{ file | safe }}">
+
+            <label>Write the rank:</label> <br>
+            <input type="number" name="rank" value="0"><br><br>
+
+            <label>Write the sphere to connect:</label> <br>
+            <input name="sphere"><br><br>
+            
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+        
+        <form class="modal-body" action="/afsphere/delete_file" method="post" >
+            <input type="hidden" name="file" value="{{ file | safe }}">
+            
+            <button type="submit" class="btn btn-primary">Delete</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

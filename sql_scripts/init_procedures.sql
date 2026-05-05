@@ -90,6 +90,18 @@ BEGIN
 END;
 $$;
 
+CREATE OR REPLACE PROCEDURE connect_by_name_rank(file_n text, sphere_n text, rank int)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+  INSERT INTO connection(file_id, sphere_id, rank)
+  SELECT file.file_id, sphere.sphere_id, rank
+  FROM file, sphere
+  WHERE sphere_name = sphere_n AND file_name = file_n
+  ON CONFLICT(file_id, sphere_id) DO NOTHING;
+END;
+$$;
+
 CREATE OR REPLACE PROCEDURE add_permission(usern text, permission_n text)
 LANGUAGE plpgsql
 AS $$

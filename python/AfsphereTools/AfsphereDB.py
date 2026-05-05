@@ -95,7 +95,14 @@ class AfsphereDB():
         query = "SELECT file.file_id, file_name, rank FROM file, connection, sphere WHERE file.file_id = connection.file_id AND connection.sphere_id = sphere.sphere_id AND sphere_name = %s ORDER BY rank DESC;"
         cur = self.Execute(query, [sphere])
 
-        return self.RenderCustomLineTable("<tr> <td>$0</td> <td><a href=\"/afsphere/file/$1\" target=\"_blank\">$1</a></td> <td>$2</td> </tr>", ["id", "name", "rank"], cur)
+        return self.RenderCustomLineTable(f"<tr> <td>$0</td> <td><a href=\"/afsphere/file/$1\" target=\"_blank\">$1</a></td> <td>$2</td> <td> <a href=\"/afsphere/file_settings/$1\" target=\"_blank\">settings</a> </td> <td> <a href=\"/afsphere/download/$1\" target=\"_blank\">download</a> </td> </tr>", ["id", "name", "rank"], cur)
+
+    def RenderSearchSpheres(self, search):
+        search = "%" + search + "%"
+        query = "SELECT sphere_id, sphere_name FROM sphere WHERE sphere_name ILIKE %s::text ORDER BY sphere_name;"
+        cur = self.Execute(query, [search])
+
+        return self.RenderCustomLineTable("<tr> <td>$0</td> <td><a href=\"/afsphere/sphere/$1\" target=\"_blank\">$1</a></td> </tr>", ["id", "name"], cur)
 
     # managing the accounts
 
@@ -131,6 +138,13 @@ class AfsphereDB():
 
         return data
 
+    def ExtractTextFileData(self, name):
+        filepat = self.OneExecute("SELECT file_path FROM file WHERE file_name = %s", [name])
+        with open(filepat, "r", encoding="UTF-8") as f:
+            data = f.read()
+
+        return data
+
     def UploadBinaryFileData(self, data, name):
         filepat = self.OneExecute("SELECT file_path FROM file WHERE file_name = %s", [name])
         with open(filepat, "wb") as f:
@@ -142,3 +156,17 @@ class AfsphereDB():
     def AddFileToSphere(self, name, data, sphere):
         self.Execute("CALL add_file_with_sphere(%s, %s, %s);", [name, len(data), sphere])
         self.UploadBinaryFileData(data, name)
+
+
+
+    def EditConnectionRank(self, sphere_name, file_name, rank):
+        query = "SELECT file.file_id, sphere.sphere_id FROM file, connection, sphere WHERE file.file_id = connection.file_id AND connection.sphere_id = sphere.sphere_id AND sphere_name = %s AND file_name = %s;"
+        cur = self.Execute(query, [sphere_name, file_name])
+
+        if cur == None or len(cur) == 0:
+            return False
+
+        lista = list(cur[0])
+        lista.insert(0, rank)
+        self.Execute("UPDATE connection SET rank = %s WHERE file_id = %s AND sphere_id = %s;", lista)
+        return True
