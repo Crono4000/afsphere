@@ -22,3 +22,15 @@ BEGIN
   RETURN itt;
 END;
 $$;
+
+CREATE OR REPLACE FUNCTION get_file_path(filenname TEXT)
+RETURNS TEXT
+LANGUAGE plpgsql
+AS $$
+DECLARE
+  result TEXT DEFAULT NULL;
+BEGIN
+  SELECT file_path INTO result FROM file WHERE file_name = filenname AND active = TRUE LIMIT 1;
+  RETURN result;
+END;
+$$;

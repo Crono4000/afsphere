@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS file (
     file_size BIGINT,
     disk_id INTEGER,
     file_name TEXT NOT NULL,
+    active BOOLEAN DEFAULT TRUE,
 
     UNIQUE (file_name),
     UNIQUE (file_path),
@@ -27,6 +28,9 @@ CREATE TABLE IF NOT EXISTS file (
     REFERENCES disk(disk_id)
     ON DELETE CASCADE
 );
+
+ALTER TABLE file
+ADD COLUMN IF NOT EXISTS active INTEGER DEFAULT TRUE;
 
 DO $$
 BEGIN

@@ -11,10 +11,10 @@ BEGIN
   IF disk_idd IS NULL THEN
     RAISE EXCEPTION 'There are no disks available';
   END IF;
-  SELECT file_id INTO file_ud FROM file WHERE disk_id IS NULL LIMIT 1;
+  SELECT file_id INTO file_ud FROM file WHERE active = FALSE AND disk_id = disk_idd LIMIT 1;
 
   IF file_ud IS NOT NULL THEN
-    UPDATE file SET file_name = ficheiro_nome, file_size = siz WHERE file_id = file_ud;
+    UPDATE file SET file_name = ficheiro_nome, file_size = siz, active = TRUE WHERE file_id = file_ud;
   ELSE
     INSERT INTO file(file_name, file_path, disk_id, file_size) VALUES (ficheiro_nome,  CONCAT_WS('/', disk_pathh, disk_cur), disk_idd, siz) RETURNING file_id INTO file_ud;
   END IF;
@@ -127,7 +127,7 @@ DECLARE
 BEGIN
   SELECT file_id, disk_id INTO macaco, disk_ff FROM file WHERE file_name = file_nm;
 
-  UPDATE file SET disk_id = NULL WHERE file_id = macaco;
+  UPDATE file SET active = FALSE WHERE file_id = macaco;
   DELETE FROM connection WHERE file_id = macaco;
 
   CALL update_disk_size(NULL, NULL, disk_ff);
