@@ -1517,3 +1517,231 @@ Traceback (most recent call last):
     data = f.read()
   File "<frozen codecs>", line 325, in decode
 UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb5 in position 11: invalid start byte
+[2026-05-06 16:07:07 +0100] [67028] [INFO] Starting gunicorn 23.0.0
+[2026-05-06 16:07:07 +0100] [67028] [INFO] Listening at: http://127.0.0.1:5000 (67028)
+[2026-05-06 16:07:07 +0100] [67028] [INFO] Using worker: gevent
+[2026-05-06 16:07:07 +0100] [67029] [INFO] Booting worker with pid: 67029
+[2026-05-06 22:07:11 +0100] [67028] [INFO] Handling signal: term
+[2026-05-06 22:07:12 +0100] [67029] [INFO] Worker exiting (pid: 67029)
+[2026-05-06 22:07:12 +0100] [67028] [INFO] Shutting down: Master
+[2026-05-06 22:07:12 +0100] [68363] [INFO] Starting gunicorn 23.0.0
+[2026-05-06 22:07:12 +0100] [68363] [INFO] Listening at: http://127.0.0.1:5000 (68363)
+[2026-05-06 22:07:12 +0100] [68363] [INFO] Using worker: gevent
+[2026-05-06 22:07:12 +0100] [68365] [INFO] Booting worker with pid: 68365
+[2026-05-14 17:21:37 +0100] [844] [INFO] Starting gunicorn 23.0.0
+[2026-05-14 17:21:37 +0100] [844] [INFO] Listening at: http://127.0.0.1:5000 (844)
+[2026-05-14 17:21:37 +0100] [844] [INFO] Using worker: gevent
+[2026-05-14 17:21:37 +0100] [858] [INFO] Booting worker with pid: 858
+[2026-05-16 15:48:10 +0100] [846] [INFO] Starting gunicorn 23.0.0
+[2026-05-16 15:48:10 +0100] [846] [INFO] Listening at: http://127.0.0.1:5000 (846)
+[2026-05-16 15:48:10 +0100] [846] [INFO] Using worker: gevent
+[2026-05-16 15:48:10 +0100] [862] [INFO] Booting worker with pid: 862
+[2026-05-16 16:29:01 +0100] [846] [INFO] Handling signal: term
+[2026-05-16 16:29:01 +0100] [862] [INFO] Worker exiting (pid: 862)
+[2026-05-16 16:29:02 +0100] [846] [INFO] Shutting down: Master
+[2026-05-16 16:29:02 +0100] [1094] [INFO] Starting gunicorn 23.0.0
+[2026-05-16 16:29:02 +0100] [1094] [INFO] Listening at: http://127.0.0.1:5000 (1094)
+[2026-05-16 16:29:02 +0100] [1094] [INFO] Using worker: gevent
+[2026-05-16 16:29:02 +0100] [1095] [INFO] Booting worker with pid: 1095
+[2026-05-23 11:34:09 +0100] [846] [INFO] Starting gunicorn 23.0.0
+[2026-05-23 11:34:09 +0100] [846] [INFO] Listening at: http://127.0.0.1:5000 (846)
+[2026-05-23 11:34:09 +0100] [846] [INFO] Using worker: gevent
+[2026-05-23 11:34:09 +0100] [861] [INFO] Booting worker with pid: 861
+                                                               [2026-06-02 15:40:16 +0100] [841] [INFO] Starting gunicorn 23.0.0
+[2026-06-02 15:40:16 +0100] [841] [INFO] Listening at: http://127.0.0.1:5000 (841)
+[2026-06-02 15:40:16 +0100] [841] [INFO] Using worker: gevent
+[2026-06-02 15:40:16 +0100] [863] [INFO] Booting worker with pid: 863
+[2026-06-02 15:45:09 +0100] [841] [INFO] Handling signal: term
+[2026-06-02 15:45:10 +0100] [863] [INFO] Worker exiting (pid: 863)
+[2026-06-02 15:45:10 +0100] [841] [INFO] Shutting down: Master
+[2026-06-02 15:45:11 +0100] [1056] [INFO] Starting gunicorn 23.0.0
+[2026-06-02 15:45:11 +0100] [1056] [INFO] Listening at: http://127.0.0.1:5000 (1056)
+[2026-06-02 15:45:11 +0100] [1056] [INFO] Using worker: gevent
+[2026-06-02 15:45:11 +0100] [1057] [INFO] Booting worker with pid: 1057
+[2026-06-02 16:19:32 +0100] [1056] [INFO] Handling signal: term
+[2026-06-02 16:19:32 +0100] [1057] [INFO] Worker exiting (pid: 1057)
+[2026-06-02 16:19:32 +0100] [1056] [INFO] Shutting down: Master
+[2026-06-02 16:19:59 +0100] [854] [INFO] Starting gunicorn 23.0.0
+[2026-06-02 16:19:59 +0100] [854] [INFO] Listening at: http://127.0.0.1:5000 (854)
+[2026-06-02 16:19:59 +0100] [854] [INFO] Using worker: gevent
+[2026-06-02 16:19:59 +0100] [871] [INFO] Booting worker with pid: 871
+[2026-06-02 16:21:26 +0100] [854] [INFO] Handling signal: term
+[2026-06-02 16:21:27 +0100] [871] [INFO] Worker exiting (pid: 871)
+[2026-06-02 16:21:27 +0100] [854] [INFO] Shutting down: Master
+[2026-06-02 16:21:27 +0100] [1057] [INFO] Starting gunicorn 23.0.0
+[2026-06-02 16:21:27 +0100] [1057] [INFO] Listening at: http://127.0.0.1:5000 (1057)
+[2026-06-02 16:21:27 +0100] [1057] [INFO] Using worker: gevent
+[2026-06-02 16:21:27 +0100] [1058] [INFO] Booting worker with pid: 1058
+[2026-06-04 17:25:10,092] ERROR in app: Exception on /afsphere/upload [POST]
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/afsphere2/python/AfspherePages/blueprint_afsphere.py", line 160, in upload_file
+    db.AddFileToSphere(file.filename, data, request.form["sphere"])
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/afsphere2/python/AfsphereTools/AfsphereDB.py", line 159, in AddFileToSphere
+    self.Execute("CALL add_file_with_sphere(%s, %s, %s);", [name, len(data), sphere])
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/afsphere2/python/AfsphereTools/AfsphereDB.py", line 10, in Execute
+    cur.execute(query, values)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.UniqueViolation: duplicate key value violates unique constraint "file_file_name_key"
+DETAIL:  Key (file_name)=(ISCTE Inteligencia artificial - 06 - Listas em Prolog.pdf) already exists.
+CONTEXT:  SQL statement "UPDATE file SET file_name = ficheiro_nome, file_size = siz, active = TRUE WHERE file_id = file_ud"
+PL/pgSQL function insert_file(text,bigint) line 14 at SQL statement
+SQL statement "CALL insert_file(ficheiro_nome, siz, file_ii)"
+PL/pgSQL function add_file_with_sphere(text,bigint,text) line 12 at CALL
+[2026-06-04 17:25:13,138] ERROR in app: Exception on /afsphere/upload [POST]
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/afsphere2/python/AfspherePages/blueprint_afsphere.py", line 153, in upload_file
+    if db.ExistFile(file.filename):
+       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/afsphere2/python/AfsphereTools/AfsphereDB.py", line 33, in ExistFile
+    return self.Exists("SELECT file_id FROM file WHERE file_name = %s AND active = TRUE", [file])
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/afsphere2/python/AfsphereTools/AfsphereDB.py", line 28, in Exists
+    cur.execute("SELECT EXISTS(" + query + ");", values)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+[2026-06-04 17:25:24,022] ERROR in app: Exception on /afsphere/sphere/prolog [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/afsphere2/python/AfspherePages/blueprint_afsphere.py", line 14, in LoadSphere
+    if not db.ExistSphere(name):
+           ~~~~~~~~~~~~~~^^^^^^
+  File "/afsphere2/python/AfsphereTools/AfsphereDB.py", line 36, in ExistSphere
+    return self.Exists("SELECT sphere_id FROM sphere WHERE sphere_name = %s", [file])
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/afsphere2/python/AfsphereTools/AfsphereDB.py", line 28, in Exists
+    cur.execute("SELECT EXISTS(" + query + ");", values)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+[2026-06-04 17:25:25,108] ERROR in app: Exception on /afsphere/sphere/prolog [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/afsphere2/python/AfspherePages/blueprint_afsphere.py", line 14, in LoadSphere
+    if not db.ExistSphere(name):
+           ~~~~~~~~~~~~~~^^^^^^
+  File "/afsphere2/python/AfsphereTools/AfsphereDB.py", line 36, in ExistSphere
+    return self.Exists("SELECT sphere_id FROM sphere WHERE sphere_name = %s", [file])
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/afsphere2/python/AfsphereTools/AfsphereDB.py", line 28, in Exists
+    cur.execute("SELECT EXISTS(" + query + ");", values)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+[2026-06-04 17:25:28,692] ERROR in app: Exception on /afsphere/search_spheres [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/afsphere2/python/AfspherePages/blueprint_afsphere.py", line 23, in LoadSearch
+    return render_template("search_sphere.html", content = db.RenderSearchSpheres(search))
+                                                           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "/afsphere2/python/AfsphereTools/AfsphereDB.py", line 103, in RenderSearchSpheres
+    cur = self.Execute(query, [search])
+  File "/afsphere2/python/AfsphereTools/AfsphereDB.py", line 10, in Execute
+    cur.execute(query, values)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+[2026-06-04 17:26:50,665] ERROR in app: Exception on /afsphere/search_spheres [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/afsphere2/python/AfspherePages/blueprint_afsphere.py", line 23, in LoadSearch
+    return render_template("search_sphere.html", content = db.RenderSearchSpheres(search))
+                                                           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "/afsphere2/python/AfsphereTools/AfsphereDB.py", line 103, in RenderSearchSpheres
+    cur = self.Execute(query, [search])
+  File "/afsphere2/python/AfsphereTools/AfsphereDB.py", line 10, in Execute
+    cur.execute(query, values)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+[2026-06-04 17:27:05 +0100] [1057] [INFO] Handling signal: term
+[2026-06-04 17:27:06 +0100] [1058] [INFO] Worker exiting (pid: 1058)
+[2026-06-04 17:27:06 +0100] [1057] [INFO] Shutting down: Master
+[2026-06-04 17:27:06 +0100] [10578] [INFO] Starting gunicorn 23.0.0
+[2026-06-04 17:27:06 +0100] [10578] [INFO] Listening at: http://127.0.0.1:5000 (10578)
+[2026-06-04 17:27:06 +0100] [10578] [INFO] Using worker: gevent
+[2026-06-04 17:27:06 +0100] [10579] [INFO] Booting worker with pid: 10579
+[2026-06-05 16:34:55 +0100] [10578] [INFO] Handling signal: term
+[2026-06-05 16:34:55 +0100] [10579] [INFO] Worker exiting (pid: 10579)
+[2026-06-05 16:34:55 +0100] [10578] [INFO] Shutting down: Master
+[2026-06-05 16:34:55 +0100] [15144] [INFO] Starting gunicorn 23.0.0
+[2026-06-05 16:34:55 +0100] [15144] [INFO] Listening at: http://127.0.0.1:5000 (15144)
+[2026-06-05 16:34:55 +0100] [15144] [INFO] Using worker: gevent
+[2026-06-05 16:34:55 +0100] [15145] [INFO] Booting worker with pid: 15145
+[2026-06-12 02:54:20 +0100] [847] [INFO] Starting gunicorn 23.0.0
+[2026-06-12 02:54:20 +0100] [847] [INFO] Listening at: http://127.0.0.1:5000 (847)
+[2026-06-12 02:54:20 +0100] [847] [INFO] Using worker: gevent
+[2026-06-12 02:54:20 +0100] [863] [INFO] Booting worker with pid: 863
+[2026-06-12 02:54:51 +0100] [847] [INFO] Handling signal: term
+[2026-06-12 02:54:51 +0100] [863] [INFO] Worker exiting (pid: 863)
+[2026-06-12 02:54:51 +0100] [847] [INFO] Shutting down: Master
+[2026-06-12 03:03:50 +0100] [840] [INFO] Starting gunicorn 23.0.0
+[2026-06-12 03:03:50 +0100] [840] [INFO] Listening at: http://127.0.0.1:5000 (840)
+[2026-06-12 03:03:50 +0100] [840] [INFO] Using worker: gevent
+[2026-06-12 03:03:50 +0100] [860] [INFO] Booting worker with pid: 860
+[2026-06-12 02:05:49 +0100] [840] [INFO] Handling signal: term
+[2026-06-12 02:05:50 +0100] [860] [INFO] Worker exiting (pid: 860)
+[2026-06-12 02:05:50 +0100] [840] [INFO] Shutting down: Master
+[2026-06-12 02:05:50 +0100] [1045] [INFO] Starting gunicorn 23.0.0
+[2026-06-12 02:05:50 +0100] [1045] [INFO] Listening at: http://127.0.0.1:5000 (1045)
+[2026-06-12 02:05:50 +0100] [1045] [INFO] Using worker: gevent
+[2026-06-12 02:05:50 +0100] [1046] [INFO] Booting worker with pid: 1046

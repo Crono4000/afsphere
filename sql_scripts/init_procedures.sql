@@ -72,7 +72,7 @@ BEGIN
     END IF;
   END IF;
 
-  UPDATE disk SET disk_used = (SELECT SUM(file_size) FROM file WHERE disk_id = t_disk_id),
+  UPDATE disk SET disk_used = (SELECT SUM(file_size) FROM file WHERE disk_id = t_disk_id AND active = TRUE),
   disk_current = (SELECT COUNT(*) FROM file WHERE disk_id = t_disk_id)
   WHERE disk_id = t_disk_id;
 END;

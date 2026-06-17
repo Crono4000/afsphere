@@ -38,6 +38,11 @@ def LoadFile(name):
         response = make_response(data)
         response.headers['Content-Type'] = 'video/' + extension
         return response
+    if extension == "html":
+        data = db.ExtractBinaryFileData(name)
+        response = make_response(data)
+        response.headers['Content-Type'] = 'text/' + extension
+        return response
     if extension == "png" or extension == "jpg" or extension == "jpeg" or extension == "webp":
         data = db.ExtractBinaryFileData(name)
         response = make_response(data)
