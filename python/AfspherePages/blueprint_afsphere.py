@@ -49,7 +49,7 @@ def LoadFile(name):
         response.headers['Content-Type'] = 'image/' + extension
         return response
     if extension == "md":
-        data = markdown.markdown(db.ExtractTextFileData(name))
+        data = markdown.markdown(db.ExtractTextFileData(name), extensions=["fenced_code", "tables", "toc"])
         return render_template_string(data)
     if extension == "txt":
         data = "<pre>" + db.ExtractTextFileData(name) + "</pre>"

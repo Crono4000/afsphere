@@ -1745,3 +1745,10 @@ psycopg.errors.InFailedSqlTransaction: current transaction is aborted, commands 
 [2026-06-12 02:05:50 +0100] [1045] [INFO] Listening at: http://127.0.0.1:5000 (1045)
 [2026-06-12 02:05:50 +0100] [1045] [INFO] Using worker: gevent
 [2026-06-12 02:05:50 +0100] [1046] [INFO] Booting worker with pid: 1046
+[2026-06-22 18:56:54 +0100] [1045] [INFO] Handling signal: term
+[2026-06-22 18:56:55 +0100] [1046] [INFO] Worker exiting (pid: 1046)
+[2026-06-22 18:56:55 +0100] [1045] [INFO] Shutting down: Master
+[2026-06-22 18:56:55 +0100] [51291] [INFO] Starting gunicorn 23.0.0
+[2026-06-22 18:56:55 +0100] [51291] [INFO] Listening at: http://127.0.0.1:5000 (51291)
+[2026-06-22 18:56:55 +0100] [51291] [INFO] Using worker: gevent
+[2026-06-22 18:56:55 +0100] [51293] [INFO] Booting worker with pid: 51293
